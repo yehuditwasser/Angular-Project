@@ -1,0 +1,28 @@
+
+<p-dialog [(visible)]="donorDialog" [style]="{width: '450px'}" header="פרטי תורם" [modal]="true"
+    styleClass="p-fluid"> 
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <!-- <h1 #myVal>וברכה</h1>    -->
+            <label for="name">שם</label>
+            <input type="text" pInputText id="name" [(ngModel)]="donor.name" required autofocus />
+            <small class="p-error" *ngIf="submitted && !donor.name">Name is required.</small>
+            <label for="image">מייל</label>    
+            <input type="text" pInputText id="email" [(ngModel)]="donor.email" required autofocus />
+            <small class="p-error" *ngIf="submitted && !donor.email">Image is required.</small>
+            <label for="donor">תמונה</label>
+            <input type="text" pInputText id="description" [(ngModel)]="donor.picture" required autofocus />
+            <small class="p-error" *ngIf="submitted && !donor.donator">Donator is required.</small>
+            <label for="donor">סוג תרומה</label>
+            <select  type="text" pInputText  [(ngModel)]="donor.typeOfDonation" required autofocus>
+                <option *ngFor="let x of types" [ngValue]="x">{{x.name}}</option>
+            </select>
+        
+        </div>
+    </ng-template>
+    <!-- <ng-template pTemplate="footer"> -->
+        <button pButton pRipple label="ביטול" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="שמירה" icon="pi pi-check" class="p-button-text" (click)="saveDonor()"></button>
+    <!-- </ng-template> -->
+</p-dialog>
+

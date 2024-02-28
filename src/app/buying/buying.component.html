@@ -1,0 +1,107 @@
+<div class="spinner-overlay" *ngIf="b">
+    <h2 style="color: aliceblue;">משתמש לא מוכר, הינך מועבר לדף הכניסה</h2>
+    <p-progressSpinner></p-progressSpinner>
+</div>
+<br>
+<div style="display: flex; justify-content: space-between;">
+    <div style="display: flex; justify-content: space-between">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly" class="ccc">
+            <div class="col-12 md:col-6 xl:col-3 p-3" *ngFor="let x of gifts; let i=index">
+                <div class="surface-card shadow-2 border-round p-4 ccc">
+                    <div class="flex flex-column align-items-center border-bottom-1 surface-border pb-3">
+                        <!-- <img src="{{'assets/' + x.picture}}" class="mb-3 w-9 img"> -->
+                        <p-image src="{{'assets/' + x.picture}}" alt="Image" width="250" height="150" [preview]="true"
+                            class="image-height"></p-image>
+                        <span class="text-xl text-900 font-medium mb-2">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">{{x.name}}</font>
+                            </font>
+                        </span>
+                        <span class="text-600 font-medium mb-3">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit; font-style: HEEBO; ">{{x.category.name}}</font>
+                            </font>
+                        </span>
+                        <span class="text-2xl text-800 block mb-3 font-semibold">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">{{x.cost}}&#8362;</font>
+                            </font>
+                        </span>
+                    </div>
+                    <div class="flex pt-3 justify-content-between align-items-center">
+                        <button *ngIf="role!='Admin' && !x.raffeled" pbutton="" pripple="" icon="pi pi-shopping-cart"
+                            label="Buy Now" class="p-element p-ripple p-button-text p-button p-component"
+                            (click)="addToCart(x)">
+                            <span class="p-button-icon p-button-icon-left pi pi-shopping-cart"
+                                aria-hidden="true"></span>
+                            <span class="p-button-label">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit; ">הוסף לסל</font>
+                                </font>
+                            </span>
+                            <span class="p-ink"></span>
+                        </button>
+                        <button *ngIf="x.raffeled" pbutton="" pripple="" icon="pi pi-shopping-cart" label="Buy Now"
+                            class="p-element p-ripple p-button-text p-button p-component" (click)="showWinner(x.id)">
+                            <span class="p-button-icon p-button-icon-left pi pi-user" aria-hidden="true"></span>
+                            <span class="p-button-label">
+                                <font style="vertical-align: inherit;">
+                                    <font style="vertical-align: inherit;">הזוכה</font>
+                                </font>
+                            </span>
+                            <span class="p-ink"></span>
+                        </button>
+                        <!-- <button *ngIf="x.raffeled"  pbutton="" pripple="" icon="pi pi-shopping-cart" label="מי הזוכה" (click)="showWinner(x.id)">הזוכה</button> -->
+
+                        <button pbutton="" pripple="" icon="pi pi-heart"
+                            class="p-element p-ripple p-button-text p-button-secondary p-button p-component p-button-icon-only"
+                            [class.selected]="selectedGiftIndex === i" (click)="toggleHeartColor(i)">
+                            <span
+                                [ngClass]="{'p-button-icon': true, 'pi': true, 'pi-heart': true, 'red-heart': isHeartClicked}"
+                                aria-hidden="true"></span>
+                            <span class="p-ink"></span>
+                        </button>
+                        <!-- thumbs-up -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="search-container">
+        <br>
+        <div class="search">
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input type="text" pInputText [(ngModel)]="value" (input)="search()" placeholder="חיפוש לפי שם מתנה" />
+            </span>
+            <br>
+            <br>
+            <span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input type="text" pInputText [(ngModel)]="value2" (input)="search2()" 
+                    placeholder="חיפוש לפי שם תורם" />
+            </span>
+            <br>
+            <br>
+            <!-- <div class="range-slider">
+                <h6>סינון לפי מחיר</h6>
+                <input type="range" min="0" max="100" [(ngModel)]="minPrice" (input)="filterGifts()" />
+                <span>Min Price: {{ minPrice }}</span>
+                <br>
+                <input type="range" min="0" max="100" [(ngModel)]="maxPrice" (input)="filterGifts()" />
+                <span>Max Price: {{ maxPrice }}</span>
+            </div> -->
+            <h6>סינון לפי מחיר</h6>
+            <br>
+            <div class="card flex justify-content-center">
+                <p-slider [(ngModel)]="rangeValues" [range]="true" (onChange)="filterGifts()"></p-slider>
+            </div>
+            <div class="slider-values">
+                <span>{{ rangeValues[0] }}</span>
+                <span>{{ rangeValues[1] }}</span>
+            </div>
+        </div>
+    </div>
+</div>

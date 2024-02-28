@@ -1,0 +1,42 @@
+
+<div class="header">
+    <div style="background-color: red; height: 10px;"></div>
+    <div style="display: flex; background-color: white;">
+        <div>
+            <h4 style="margin-top:25px; margin-left: 10px;">תמיד-בשבילכם</h4>
+            <h5 style="margin-left: 20px;">*5020</h5>
+        </div>
+        <div class="logo">
+            <a href="/" target="_blank" style="cursor: pointer; "><img src="../assets/ll.png" alt="logo"
+                    style="height: 70px; width: 300px; margin-left: 1000px; margin-top: 10px;"></a>
+        </div>
+    </div>
+    <app-menu *ngIf="role=='Admin'"></app-menu>
+    <app-menu-user *ngIf="role=='User'||role=='defalt'"></app-menu-user>
+</div>
+<div class="component-container">
+    <router-outlet></router-outlet>
+</div>
+
+<!-- 
+<div style="background-color: red; height: 10px;"></div>
+<div style="background-color: white;">
+<p-toolbar class="my-toolbar" styleClass="mb-4" style="background-color: white;">
+    <ng-template pTemplate="left">
+        <div>
+            <h4 >תמיד-בשבילכם</h4>
+            <h5 >*5020</h5>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="right">
+        <div class="logo">
+            <a href="/" target="_blank" style="cursor: pointer; "><img src="../assets/ll.png" alt="logo" style="width: 300px;"></a>
+        </div>
+    </ng-template>
+</p-toolbar>
+<app-menu *ngIf="role=='Admin'"></app-menu>
+<app-menu-user *ngIf="role=='User'||role=='defalt'"></app-menu-user>
+</div>
+<div class="component-container">
+    <router-outlet></router-outlet>
+</div> -->

@@ -1,0 +1,49 @@
+<!-- <p-tabMenu [model]="items" [activeItem]="activeItem" class="a">
+    <ng-template pTemplate="item" let-item >
+        <a (click)="changeRoute(item)" class="p-menuitem-link flex justify-content-between align-items-center p-3" >
+            <div>
+                <span [class]="item.icon"></span>
+                <span> {{ item.label }}</span>
+            </div>
+        </a>
+    </ng-template>
+</p-tabMenu> -->
+<div class="spinner-overlay" *ngIf="b">
+    <h2 style="color: aliceblue;">יוצא מהמשתמש...</h2>
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+<nav class="navbar navbar-expand-sm bg-light">
+    <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+            <a class="nav-link" routerLink="#" routerLinkActive="active" (click)="logOut()">
+              <i class="pi pi-user-minus"></i> יציאה
+            </a>
+          </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/gifts" routerLinkActive="active">
+          <i class="pi pi-user"></i> ניהול מתנות
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/donors" routerLinkActive="active">
+          <i class="pi pi-shopping-cart"></i> תורמים
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">
+          <i class="pi pi-home"></i> דף הבית
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/purchases" routerLinkActive="active">
+          <i class="pi pi-list"></i> רכישות
+        </a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" routerLink="/raffle" routerLinkActive="active">
+          <i class="pi pi-home"></i> הגרלה
+        </a>
+      </li> -->
+    </ul>
+  </nav>

@@ -1,0 +1,152 @@
+<br>
+<br>
+<div class="card">
+    <p-tabView>
+        <p-tabPanel header="צפייה ברכישות">
+            <div class="card">
+                <p-table [value]="purchases" [tableStyle]="{'min-width': '60rem'}">
+                    <ng-template pTemplate="caption">
+                        <div class="flex align-items-center justify-content-between">
+                            רכישות
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>תאריך</th>
+                            <th>פרטי רכישה</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-purchase>
+                        <tr>
+                            <td>{{purchase.date}}</td>
+                            <td>
+                                <button type="button" class="btn btn-light"
+                                    (click)="showDialog(purchase.purchaseDetails)" data-mdb-ripple-init
+                                    data-mdb-ripple-color="dark">פרטי רכישה</button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="flex align-items-center justify-content-between">
+                            בסך הכל יש {{purchases ? purchases.length : 0 }} רכישות.
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="צפייה ברכישות כרטיסים עבור כל מתנה">
+            <div class="card">
+                <p-table [value]="gifts" [tableStyle]="{'min-width': '60rem'}">
+                    <ng-template pTemplate="caption">
+                        <div class="flex align-items-center justify-content-between">
+                            רכישות כרטיסים עבור כל מתנה
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>שם</th>
+                            <th>מחיר</th>
+                            <th>תמונה</th>
+                            <th>רכישות</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-purchase>
+                        <tr>
+                            <td>{{purchase.name}}</td>
+                            <td>{{purchase.cost}}</td>
+                            <td><img src="{{'assets/' + purchase.picture}}" class="mb-3 w-9 img"
+                                    style="height: 100px; width: auto;">
+
+
+                            <td>
+                                <button type="button" class="btn btn-light" (click)="showDialog2(purchase.purchases)"
+                                    data-mdb-ripple-init data-mdb-ripple-color="dark">פרטי רכישה של המתנה</button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="flex align-items-center justify-content-between">
+                            In total there are {{gifts ? gifts.length : 0 }} gifts.
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="צפייה בפרטי הרוכשים">
+            <div class="card">
+                <p-table [value]="users" [tableStyle]="{'min-width': '60rem'}">
+                    <ng-template pTemplate="caption">
+                        <div class="flex align-items-center justify-content-between">
+                            פרטי רוכשים
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>שם</th>
+                            <th>מייל</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-users>
+                        <tr>
+                            <td>{{users.name}}</td>
+                            <td>{{users.email}}</td>
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="summary">
+                        <div class="flex align-items-center justify-content-between">
+                            In total there are {{users ? users.length : 0 }} users.
+                        </div>
+                    </ng-template>
+                </p-table>
+            </div>
+        </p-tabPanel>
+    </p-tabView>
+</div>
+
+<p-dialog header="פרטי רכישה" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false"
+    [resizable]="false">
+    <p class="m-0">
+    <div class="my-css2">
+        <p-table #dt [value]="purchasesDetails">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="gift">מתנה <p-sortIcon field="gift"></p-sortIcon></th>
+                    <th pSortableColumn="quantity">כמות <p-sortIcon field="quantity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-purchasesDetail>
+                <tr>
+                    <td>{{purchasesDetail.gift.name}}</td>
+                    <td>{{purchasesDetail.quantity}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</p-dialog>
+
+<p-dialog header="פרטי רכישת מתנות" [(visible)]="visible1" [modal]="true" [style]="{ width: '50vw'}" [draggable]="false"
+    [resizable]="false">
+    <p class="m-0">
+    <div class="my-css2">
+        <p-table #dt [value]="giftDetails">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="name">תאריך <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="quantity">כמות <p-sortIcon field="quantity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-giftDetail>
+                <tr>
+                    <td>{{giftDetail.date}}</td>
+                    <td>{{giftDetail.quantity}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</p-dialog>
+<br>
+<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2024 מכירה סינית:
+    <a class="text-reset fw-bold" href="#!">YadBeyad.com</a>
+</div>

@@ -1,0 +1,29 @@
+<p-dialog [(visible)]="giftDialog" [style]="{width: '450px'}" header="פרטי מתנה" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="p-field">
+      <label for="name">שם מתנה</label>
+      <input type="text" pInputText id="name" [(ngModel)]="gift.name" required autofocus />
+      <small class="p-error" *ngIf="submitted && !gift.name">Name is required.</small>
+      <label for="image">תמונה</label>
+      <input type="text" pInputText id="image" [(ngModel)]="gift.picture" required autofocus />
+      <small class="p-error" *ngIf="submitted && !gift.image">Image is required.</small>
+      <!-- <label for="donator">Donor</label> -->
+      <!-- <input type="text" pInputText id="donator" [(ngModel)]="gift.donor" required autofocus />
+            <small class="p-error" *ngIf="submitted && !gift.donator">Donator is required.</small> -->
+      <label for="ticketCost">סכום</label>
+      <input type="number" pInputText id="ticketCost" [(ngModel)]="gift.cost" required autofocus />
+      <small class="p-error" *ngIf="submitted && !gift.ticketCost">TicketCost is required.</small>
+      <label for="category">קטגוריה</label>
+      <select type="text" pInputText id="category" [(ngModel)]="gift.category" required autofocus>
+        <option *ngFor="let x of categories" [ngValue]="x">
+          {{ x.name }}
+        </option>
+      </select>
+      <small class="p-error" *ngIf="submitted && !gift.category">Category is required.</small>
+    </div>
+  </ng-template>
+  <!-- <ng-template pTemplate="footer"> -->
+  <button pButton pRipple label="ביטול" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+  <button pButton pRipple label="שמירה" icon="pi pi-check" class="p-button-text" (click)="saveGift()"></button>
+  <!-- </ng-template> -->
+</p-dialog>

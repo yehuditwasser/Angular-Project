@@ -1,0 +1,17 @@
+<!-- <div id="rateMe1">
+    <span class="star" (click)="selectStar(i)" [ngClass]="{'selected': i <= selectedStarIndex}" *ngFor="let star of stars; let i = index"></span>
+  </div> -->
+  <!-- <div (click)="toggleHeart()" [ngClass]="{'red': isHeartFilled}" class="heart">
+    <i class="fas fa-heart"></i>
+  </div> -->
+  <!-- <div (click)="toggleHeart()" *ngIf="isHeartFilled==false" >
+    <i class="fas fa-heart" style="background-color: gray;"></i>
+  </div>
+  <div *ngIf="isHeartFilled" >
+    <i class="fas fa-heart" style="background-color: red;"></i>
+  </div> -->
+  <div (click)="toggleHeart()" [ngClass]="{'red': isHeartFilled}" class="heart">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 21.35l-1.45-1.32C4.53 14.45 1 11.22 1 7.5 1 4.42 3.42 2 6.5 2c1.74 0 3.41.81 4.5 2.09C12.59 2.81 14.26 2 16 2 19.08 2 21.5 4.42 21.5 7.5c0 3.72-3.53 6.95-10.55 12.53L12 21.35z"/>
+    </svg>
+  </div>

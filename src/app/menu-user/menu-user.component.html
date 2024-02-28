@@ -1,0 +1,53 @@
+<div class="spinner-overlay" *ngIf="b">
+  <h2 style="color: aliceblue;">יוצא מהמשתמש...</h2>
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<nav class="navbar navbar-expand-sm bg-light">
+
+  <ul class="navbar-nav mx-auto">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="#" routerLinkActive="active" (click)="logOut()">
+        <i class="pi pi-user-minus"></i> יציאה
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/register" routerLinkActive="active">
+        <i class="pi pi-user-plus"></i> הרשמה
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/login" routerLinkActive="active">
+        <i class="pi pi-user"></i> כניסה
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/buying" routerLinkActive="active" >
+        <i class="pi pi-shopping-cart"></i> קניית כרטיסים
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/home" routerLinkActive="active">
+        <i class="pi pi-home"></i> דף הבית
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="my-cart">
+        <mat-badge [matBadge]="total" matBadgeColor="warn">
+          <mat-icon class="large-icon" style="color: black;">shopping_cart</mat-icon>
+        </mat-badge>
+      </a>
+    </li>
+  </ul>
+</nav>
+<!-- <mat-badge [matBadge]="4" matBadgeColor="primary">
+  <mat-icon color="accent">mail</mat-icon>
+</mat-badge> -->
+<!-- 
+
+<a routerLink="/cart">
+  <span class="glyphicon glyphicon-heart icon" aria-hidden="true">
+    <span *ngIf="total" class="badge badge-notify">{{total.text}}
+    </span>
+  </span>
+</a> -->

@@ -1,0 +1,10 @@
+#cent {
+    max-width: 900px;
+    margin-left: 500px;
+    margin-right: auto;
+  }
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 2px;
+  }
